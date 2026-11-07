@@ -1,0 +1,57 @@
+{
+  "name": "@jaeyeong/nestjs-graphql-search-field",
+  "version": "0.1.1",
+  "description": "NestJS GraphQL decorator metadata for building TypeORM where inputs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ababqw123/nestjs-graphql-search-field.git"
+  },
+  "homepage": "https://github.com/ababqw123/nestjs-graphql-search-field#readme",
+  "bugs": {
+    "url": "https://github.com/ababqw123/nestjs-graphql-search-field/issues"
+  },
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --sourcemap --clean",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@nestjs/graphql": ">=10",
+    "graphql": ">=16",
+    "reflect-metadata": ">=0.1",
+    "typeorm": ">=0.3"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
+  },
+  "keywords": [
+    "nestjs",
+    "graphql",
+    "decorator",
+    "typeorm",
+    "search",
+    "where"
+  ]
+}
