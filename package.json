@@ -1,6 +1,6 @@
 {
   "name": "@jaeyeong/nestjs-graphql-search-field",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "NestJS GraphQL decorator metadata for building TypeORM where inputs",
   "repository": {
     "type": "git",

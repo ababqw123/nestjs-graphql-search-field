@@ -175,20 +175,37 @@ requests to `main`.
 
 ## Publishing
 
-The package is published to the public npm registry. Publishing is manual and
-requires an npm account with access to `@jaeyeong/nestjs-graphql-search-field`.
+The package is published to the public npm registry by
+[the publish workflow](https://github.com/ababqw123/nestjs-graphql-search-field/actions/workflows/publish.yml)
+when a stable version tag such as `v0.1.2` is pushed. The workflow uses npm trusted
+publishing (OIDC), so no npm token needs to be stored in GitHub secrets.
 
-After validating the changes, update the version and publish:
+After committing and validating the changes on `main`, update the version and
+push the commit and tag:
 
 ```sh
 npm version patch
 git push origin main --follow-tags
-npm publish
 ```
 
-`prepublishOnly` builds the package before publishing. The repository, homepage,
-and issue links in `package.json` will appear on npm with the next published
-version; pushing to GitHub alone does not update an existing npm release.
+The workflow checks that the tag matches `package.json` and points to a commit on
+`main`, checks types, builds the package, verifies its entry points, and publishes
+it. `prepublishOnly` also builds the package before publishing. Pushing ordinary
+commits to `main` runs CI without publishing a new version.
+
+The npm package's Trusted Publisher settings must match:
+
+| Setting | Value |
+| --- | --- |
+| Provider | GitHub Actions |
+| Organization or user | `ababqw123` |
+| Repository | `nestjs-graphql-search-field` |
+| Workflow filename | `publish.yml` |
+| Environment name | Leave empty |
+| Allow npm publish | Enabled |
+
+The repository, homepage, and issue links in `package.json` are included with
+each new npm release.
 
 ## Issues
 
